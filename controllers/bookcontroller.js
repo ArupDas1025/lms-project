@@ -15,7 +15,7 @@ const addbook = catchAsync(async(req,res,next)=>{
             // return next(new AppError("please enter they all body value",401));
         }
         const bookname_exist = await book.findAll({where:{bookname:data.bookname}});
-        if(bookname_exist){
+        if(bookname_exist.length > 0){
             return res.render('pages/books',{message:"Book name already exsiste"});
             // return next(new AppError("this book is already present",401));
         }
