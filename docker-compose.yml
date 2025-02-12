@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@host.docker.internal:5432/students  # Connect to local PostgreSQL
+    network_mode: "host"  # Use host network to allow direct access to 127.0.0.1
