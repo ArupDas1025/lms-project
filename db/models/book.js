@@ -1,7 +1,7 @@
 const sequelize = require("../../config/database");
 const Sequelize = require('sequelize')
 
-const Book = sequelize.define('Book', {
+const Book = sequelize.define('book', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -41,7 +41,7 @@ const Book = sequelize.define('Book', {
     {
       paranoid:true,
       freezeTableName:true,
-      modelName:'Book'
+      modelName:'book'
     
     }
   );
