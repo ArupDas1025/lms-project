@@ -14,6 +14,9 @@ router.post('/add-book',bookcontroller.addbook);
 
 router.get('/show-book',bookcontroller.showbook);
 
+router.post('/updatebookpage',bookcontroller.updatebookpage);
+
+router.post('/update',bookcontroller.updatebook);
 
 
 module.exports = router;

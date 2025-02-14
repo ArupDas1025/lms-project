@@ -1,0 +1,111 @@
+keep the record of different categories.
+classify the book subject wise.
+The easy way to enter a new book.
+Keep the record of complete information of a block 
+the easy way to make check-in 
+the easy way to make check-out.
+automatic fine calculation for late returns.
+different ceriteria for 
+
+
+Nodejs 
+Expressjs
+Handebars
+Postgresql
+Bootstrap
+Jquerry
+
+Arup-lms> npx express-generator
+Arup-lms> npm install
+
+Arup-lms> npm i body-parser dotenv express3-handlebars hbs html node nodemon pg pg-hstore sequelize 
+
+app.js
+        //cahnges 1 
+    const expHbs = require('express3-handlebars');
+
+    const bodyparser = require('body-parser');
+    app.use(bodyparser.json())
+    app.use(bodyparser.urlencoded({extended:false}))
+
+        // view engine setup
+    // app.set('views', path.join(__dirname, 'views'));
+    // app.set('view engine', 'hbs');
+
+    app.engine('hbs',expHbs({defaultLayout:'layout',extname:'.hbs'}))
+    app.set('view engine','hbs');
+
+    require('dotenv').config();
+
+    // app.use(logger('dev'));
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: false }));
+    app.use(cookieParser());
+    app.use(express.static(path.join(__dirname, 'public')));
+    
+    app.use('/', indexRouter);
+    // app.use('/users', usersRouter);
+
+    // catch 404 and forward to error handler
+    app.use(function(req, res, next) {
+    next(createError(404));
+    });
+
+    // error handler
+    app.use(function(err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
+    });
+
+    module.exports = app;
+
+Arup-lms> delete user.js file.
+Arup-lms>
+Arup-lms>
+
+
+Arup-lms>
+Arup-lms>
+Arup-lms>
+Arup-lms>
+Arup-lms>
+
+Arup-lms>
+Arup-lms>
+Arup-lms>
+Arup-lms>
+3) add layout and header file set;
+
+Arup-lms>
+Arup-lms>
+Arup-lms>
+Arup-lms>
+Arup-lms>
+Arup-lms>
+4) add book function
+
+Arup-lms>
+Arup-lms>
+Arup-lms>
+Arup-lms>
+Arup-lms>
+Arup-lms>
+Arup-lms>
+
+
+Arup-lms>
+Arup-lms>
+Arup-lms>
+
+
+$ npx express-generator
+
+
+$ cd myapp
+$ npm install
+

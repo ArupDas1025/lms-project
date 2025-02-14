@@ -1,0 +1,27 @@
+<h1>{{title}}</h1>
+
+<div class="col-sm-6 col-md-6 col-sm-offset-3">
+    <form action="/book/updatebookpage" method="post">
+        <div class="from-group">
+        {{!-- <label for="isbn">ISBN:</label>
+        <input type="text" name="isbn" class="form-control" id="isbn"> --}}
+
+        <label for="bookname">Book Name or Isbn:</label>
+        <input type="text" name="bin" class="form-control" id="bookname">
+
+        {{!-- <label for="subject">Subject:</label>
+        <input type="text" name="subject" class="form-control" id="subject">
+        
+        <label for="auther">Auther:</label>
+        <input type="text" name="auther" class="form-control" id="auther">
+
+        <label for="publisher">Publisher:</label>
+        <input type="text" name="publisher" class="form-control" id="publisher">
+
+        <label for="copies">Copies:</label>
+        <input type="text" name="copies" class="form-control" id="copies"> --}}
+
+        <button type="submit" class="button button1" align="center">SEARCH BOOK</button>
+        </div> 
+    </form> 
+</div>

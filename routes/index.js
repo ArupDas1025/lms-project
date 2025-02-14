@@ -12,6 +12,9 @@ router.get('/addbook', function(req, res, next) {
 router.get('/showbook', function(req, res, next) {
   res.render('form/showbook', { title: 'SHOW BOOK: ' });
 });
+router.get('/updatebookpage', function(req, res, next) {
+  res.render('form/updatebookpage', { title: 'SEARCH BOOK FOR UPDATE :' });
+});
 
 
 

@@ -1,0 +1,34 @@
+<h1>Update Book</h1>
+
+{{#if message}}
+    <p style="color: red;">{{message}}</p>
+{{/if}}
+
+<div class="col-sm-6 col-md-6 col-sm-offset-3">
+    <form action="/book/update" method="post">
+        <div class="form-group">
+            <label for="isbn">ISBN:</label>
+            <input type="text" name="isbn" class="form-control" id="isbn" value="{{book.isbn}}" >
+
+            <label for="bookname">Book Name:</label>
+            <input type="text" name="bookname" class="form-control" id="bookname" value="{{book.bookname}}" >
+
+            <label for="subject">Subject:</label>
+            <input type="text" name="subject" class="form-control" id="subject" value="{{book.subject}}" required>
+
+            <label for="auther">Author:</label>
+            <input type="text" name="auther" class="form-control" id="auther" value="{{book.auther}}" required>
+
+            <label for="publisher">Publisher:</label>
+            <input type="text" name="publisher" class="form-control" id="publisher" value="{{book.publisher}}" required>
+
+            <label for="copies">Copies:</label>
+            <input type="text" name="copies" class="form-control" id="copies" value="{{book.copies}}" required>
+
+            <button type="submit" class="button button1">UPDATE BOOK</button>
+        </div> 
+    </form> 
+</div>
+
+<!-- Debugging Output -->
+<p>Debug Info: {{book.bookname}}</p>
