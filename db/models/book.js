@@ -46,4 +46,4 @@ const Book = sequelize.define('book', {
     }
   );
 
-    module.exports = Book;
+    module.exports = book;
