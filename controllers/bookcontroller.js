@@ -40,7 +40,7 @@ const addbook = catchAsync(async(req,res,next)=>{
 
 });
 
-const showbook = async(req,res)=>{
+const showbook = catchAsync(async(req,res)=>{
         try{
             const books = await book.findAll();
             const data = Object.entries(books);
@@ -48,10 +48,25 @@ const showbook = async(req,res)=>{
         }catch(err){
 
         }
-}
+});
+
+const updatebook = catchAsync(async(req,res,next)=>{
+    try{
+        console.log(req.body);
+        const book = await book.findbypk(req.param.bookname);
+        if( data == undefined || data == null) {
+            return res.render('pages/books',{message:"please give a book details"});
+
+        }
+        
+    }catch(err){
+
+    }
+});
 
 module.exports = {
     addbook,
-    showbook
+    showbook,
+    updatebook,
 
 }
