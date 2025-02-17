@@ -16,9 +16,15 @@ const addbook = catchAsync(async(req,res,next)=>{
             return res.render('pages/books',{message:"please give a book details"});
             // return next(new AppError("please enter they all body value",401));
         }
-        const bookname_exist = await book.findAll({where:{bookname:data.bookname}});
+        const bookname_exist = await book.findAll({where: {
+            [Op.or]: [
+                { bookname: data.bookname },
+                { isbn: data.isbn }
+            ]
+        }
+        });
         if(bookname_exist.length > 0){
-            return res.render('pages/books',{message:"Book name already exsiste"});
+            return res.render('pages/books',{message:"Book already exsiste"});
             // return next(new AppError("this book is already present",401));
         }
 
@@ -27,7 +33,7 @@ const addbook = catchAsync(async(req,res,next)=>{
             isbn:data.isbn,
             bookname:data.bookname,
             subject:data.subject,
-            auther:data.auther,
+            author:data.author,
             publisher:data.publisher,
             copies:data.copies
         });
@@ -44,9 +50,13 @@ const addbook = catchAsync(async(req,res,next)=>{
 
 const showbook = catchAsync(async(req,res)=>{
         try{
-            const books = await book.findAll();
-            const data = Object.entries(books);
-            res.json(books);
+            const result = await book.findAll();
+            // const data = Object.entries(books);
+            // console.log(books);
+            return res.render('pages/showbooks',{result,message:"Show Book successfully :"});
+
+
+            // res.json(books);
         }catch(err){
 
         }
@@ -80,7 +90,7 @@ const updatebookpage = catchAsync(async(req,res,next)=>{
 
     }catch(err){
         console.error(err);
-        res.render('pages/update', { message: "Error loading book details." });
+        res.render('pages/sh', { message: "Error loading book details." });
     }
 });
 
@@ -153,13 +163,14 @@ const updatebook = catchAsync(async (req, res, next) => {
         }
 
         console.log("Existing Book found:", existingBook);
+        console.log(existingBook.author)
 
         // Prepare update data (if any field is missing, we use existing book data)
         const updateData = {
             isbn: data.isbn || existingBook.isbn,
             bookname: data.bookname || existingBook.bookname,
             subject: data.subject || existingBook.subject,
-            auther: data.auther || existingBook.auther,
+            author: data.author || existingBook.author,
             publisher: data.publisher || existingBook.publisher,
             copies: data.copies || existingBook.copies
         };

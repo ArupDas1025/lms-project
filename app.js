@@ -23,7 +23,7 @@ app.engine('hbs',expHbs({defaultLayout:'layout',extname:'.hbs'}))
 app.set('view engine','hbs');
 
 require('dotenv').config();
-
+//add helper function
 
 // app.use(logger('dev'));
 app.use(express.json());

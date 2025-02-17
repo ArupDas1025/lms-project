@@ -18,7 +18,7 @@ module.exports = {
       subject:{
         type:Sequelize.STRING
       },
-      auther: {
+      author: {
         type: Sequelize.STRING
       },
       publisher: {

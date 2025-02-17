@@ -10,7 +10,7 @@ router.get('/addbook', function(req, res, next) {
   res.render('form/addbook', { title: 'ADD BOOK : ' });
 });
 router.get('/showbook', function(req, res, next) {
-  res.render('form/showbook', { title: 'SHOW BOOK: ' });
+  res.render('form/showbutton', { title: 'SHOW BOOK: ' });
 });
 router.get('/updatebookpage', function(req, res, next) {
   res.render('form/updatebookpage', { title: 'SEARCH BOOK FOR UPDATE :' });

@@ -1,13 +1,30 @@
-<ul class="list-group">
+<body>
 
-   <h3>{{message}}</h3>
+    <div class="container mt-4">
+        <h1 class="mb-4">{{message}}</h1>
 
-    {{#each data}}
-    <li class="list-group-item">{{data}}</li>
-    {{/each}}
+        {{#if result.length}}
+        <div class="row">
+            {{#each result}}
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" style="font-weight: bold; color: #007bff;">{{this.bookname}}</h5>
+                        <p class="card-text">
+                            <strong>ISBN:</strong> {{this.isbn}}<br>
+                            <strong>SUBJECT:</strong> {{this.subject}}<br>
+                            <strong>AUTHOR:</strong> {{this.author}}<br>
+                            <strong>PUBLISHER:</strong> {{this.publisher}}<br>
+                            <strong>COPIES:</strong> {{this.copies}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        {{else}}
+        <p>No books available.</p>
+        {{/if}}
+    </div>
 
-    {{!-- <h3>{{data}}</h3> --}}
-
-
-
-</ul>
+</body>

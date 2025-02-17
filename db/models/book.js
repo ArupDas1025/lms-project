@@ -17,7 +17,7 @@ const Book = sequelize.define('Book', {
       subject:{
         type:Sequelize.STRING
       },
-      auther: {
+      author: {
         type: Sequelize.STRING
       },
       publisher: {
