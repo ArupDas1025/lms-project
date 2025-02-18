@@ -2,7 +2,7 @@
 const book = require('../db/models/book');
 const AppError = require('../utils/apperror');
 const catchAsync = require('../utils/catchAsync');
-const { Op } = require('sequelize');
+const { Op, where } = require('sequelize');
 
 
 
@@ -197,6 +197,60 @@ const updatebook = catchAsync(async (req, res, next) => {
     }
 });
 
+const deletepage = catchAsync(async(req,res,next)=>{
+    try{
+    console.log(req.body.bin);
+
+    const data = req.body;
+    if(!data || !data.bin ){
+        return res.render('pages/book',{message:"please give book details for delete ."});
+    };
+
+    const existingBook = await book.findOne({
+        where :{
+            [Op.or]:[
+                {bookname:data.bin},
+                {isbn:data.bin}
+            ]
+        }
+    });
+
+    console.log(existingBook);
+
+    if(!existingBook){
+        return res.render('pages/books',{message:"Book not found to delete ."})
+    }
+    return res.render('form/deletepage',{title :'DELETE BOOK :', message : '* Check carefully Before delete the book .',book:existingBook});
+    }catch(err){
+        console.error(err);
+        res.render('pages/books', { message: "Failed to DELETE book." });
+    }
+
+});
+
+const deletebook = catchAsync(async(req,res,next)=>{
+    try{
+    console.log(req.body.isbn);
+
+    const isbn = req.body.isbn;
+
+    const deleted = await book.destroy({
+        where:{isbn:isbn}
+    });
+
+    if(!deleted){
+        return res.render('pages/books',{message:'Book not found and not delelted sucessfully'});
+    };
+
+    // return res.render('form/deletepage',{title :'DELETE BOOK', message : '* Check carefully Before delete the book .',book:existingBook});
+    return res.render('pages/books',{message : 'Book Deleted Successfully .'});
+    }catch(err){
+        console.error(err);
+        res.render('pages/books', { message: "Failed to DELETE book." });
+    }
+
+});
+
 
 
 module.exports = {
@@ -204,5 +258,7 @@ module.exports = {
     showbook,
     updatebookpage,
     updatebook,
+    deletepage,
+    deletebook
 
 }

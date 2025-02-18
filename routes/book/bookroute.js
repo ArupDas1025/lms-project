@@ -18,5 +18,9 @@ router.post('/updatebookpage',bookcontroller.updatebookpage);
 
 router.post('/update',bookcontroller.updatebook);
 
+router.post('/deletepage',bookcontroller.deletepage);
+
+router.post('/delete',bookcontroller.deletebook);
+
 
 module.exports = router;
