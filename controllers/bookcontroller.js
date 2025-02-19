@@ -18,7 +18,7 @@ const addbook = catchAsync(async(req,res,next)=>{
         }
         const bookname_exist = await book.findAll({where: {
             [Op.or]: [
-                { bookname: data.bookname },
+                // { bookname: data.bookname },
                 { isbn: data.isbn }
             ]
         }
@@ -53,7 +53,7 @@ const showbook = catchAsync(async(req,res)=>{
             const result = await book.findAll();
             // const data = Object.entries(books);
             // console.log(books);
-            return res.render('pages/showbooks',{result,message:"Show Book successfully :"});
+            return res.render('pages/showbooks',{result,message:"ALL Books :"});
 
 
             // res.json(books);
@@ -95,46 +95,6 @@ const updatebookpage = catchAsync(async(req,res,next)=>{
 });
 
 
-
-// Controller to handle form submission
-// const updatebook = catchAsync(async (req, res, next) => {
-//     try {
-//         // const bookname = req.params.bookname;
-//         const data = req.body;
-//         console.log(data);
-
-//         // Find book by name
-//         // const existingBook = await book.findOne({ where: { bookname } });
-
-//         // if (!existingBook) {
-//         //     return res.render('pages/update', { message: "Book not found." });
-//         // }
-
-//         // Update the book details
-//         const updatedata={
-//             isbn: data.isbn,
-//             bookname:data.bookname ,
-//             subject: data.subject ,
-//             auther: data.auther ,
-//             publisher: data.publisher ,
-//             copies: data.copies
-//         };
-
-//         await book.update(updatedata,{
-//             where:{
-//                 [Op.or]:[
-//                             {bookname:data.isbn},
-//                             {isbn:data.bookname}
-//                         ]
-//                         }
-//         });
-
-//         return res.render('pages/books', {message: "Book updated successfully!" });
-//     } catch (err) {
-//         console.error(err);
-//         res.render('pages/books', { message: "Failed to update book." });
-//     }
-// });
 
 const updatebook = catchAsync(async (req, res, next) => {
     try {
@@ -251,6 +211,38 @@ const deletebook = catchAsync(async(req,res,next)=>{
 
 });
 
+const searchbook = catchAsync(async(req,res,next)=>{
+    try{
+        console.log(req.body.sbn);
+
+        const data = req.body;
+        if(!data || !data.sbn) {
+            return res.render('pages/books',{message:"Please give book details to Search."});
+        }
+        // return res.render('pages/books',{message:"please give a book details"});
+        const existingbook = await book.findAll({
+            where:{
+                [Op.or]:[
+                            {bookname:data.sbn},
+                            {subject:data.sbn}
+                        ]
+                        }
+        });
+        console.log(existingbook)
+
+        if(!existingbook){
+            return res.render('pages/books',{message: "Book not found."});
+        }
+
+        console.log(existingbook);
+        return res.render('form/search',{ title: 'SEARCH BOOK DETAILS:', result:existingbook});
+
+    }catch(err){
+        console.error(err);
+        res.render('pages/sh', { message: "Error loading book details." });
+    }
+    
+})
 
 
 module.exports = {
@@ -259,6 +251,7 @@ module.exports = {
     updatebookpage,
     updatebook,
     deletepage,
-    deletebook
+    deletebook,
+    searchbook
 
 }

@@ -11,7 +11,6 @@ router.get('/', async(req, res, next)=>{
 
 router.post('/add-book',bookcontroller.addbook);
 
-
 router.get('/show-book',bookcontroller.showbook);
 
 router.post('/updatebookpage',bookcontroller.updatebookpage);
@@ -21,6 +20,8 @@ router.post('/update',bookcontroller.updatebook);
 router.post('/deletepage',bookcontroller.deletepage);
 
 router.post('/delete',bookcontroller.deletebook);
+
+router.post('/search',bookcontroller.searchbook);
 
 
 module.exports = router;

@@ -1,17 +1,4 @@
-<body>
-        {{!-- <div class="d-flex align-items-center"> --}}
-    <form action="/book/search" method="post" class="d-flex align-items-center">
-        <div class="from-group">
-
-        <label for="bookname">Book Name or Subject:</label>
-        <input type="text" name="sbn" class="form-control" id="bookname">
-
-        <button type="submit" class="button button1" align="center">SEARCH BOOK</button>
-        </div> 
-    </form> 
-            {{!-- </div> --}}
-
-    <div class="container mt-4">
+<div class="container mt-4">
         <h1 class="mb-4">{{message}}</h1>
 
 
@@ -38,7 +25,3 @@
         <p>No books available.</p>
         {{/if}}
     </div>
-
-    
-</div>
-</body>
